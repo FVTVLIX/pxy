@@ -131,11 +131,30 @@ export const getCategories = async () => {
     return result.categories;
 }
 
-export const submitComment = async (obj) => {
+export const submitComment = async (object) => {
     const result = await fetch('/api/comments', {
         method: 'POST',
-        body: JSON.stringify(obj), 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(object), 
     })
 
     return result.json()
+}
+
+export const getComments = async (slug) => {
+    const query = gql`
+        query GetCcomments($slug: String!) {
+            comments(where: { post: { slug: $slug } } ) {
+                name
+                createdAt
+                comment
+            }
+        }
+    `
+
+    const result = await request(graphqlAPI, query, { slug });
+
+    return result.comments;
 }

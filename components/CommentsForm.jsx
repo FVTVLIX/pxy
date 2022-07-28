@@ -12,6 +12,11 @@ const CommentsForm = ({ slug }) => {
     const emailElement = useRef()
     const storeDataElement = useRef()
 
+    useEffect(() => {
+        nameElement.current.value = window.localStorage.getItem('name');
+        emailElement.current.value = window.localStorage.getItem('email');
+    }, []);
+
     const handleCommentSubmission = () => {
         setError(false);
 
@@ -28,17 +33,17 @@ const CommentsForm = ({ slug }) => {
         const commentObject = { name, email, comment, slug };
 
         if(storeData) {
-            localStorage.setItem( 'name', name )
-            localStorage.setItem( 'email', email )
+            window.localStorage.setItem( 'name', name )
+            window.localStorage.setItem( 'email', email )
         } else {
-            localStorage.removeItem('name', name )
-            localStorage.removeItem('email', email )
+            window.localStorage.removeItem('name', name )
+            window.localStorage.removeItem('email', email )
         }
 
         submitComment( commentObject )
             .then((response) => {
                 setShowSuccessMessage(true)
-                
+
                 setTimeout(() => {
                     setShowSuccessMessage(false)
                 }, 3000)
@@ -48,7 +53,7 @@ const CommentsForm = ({ slug }) => {
 
     return (
         <div className='bg-white shadow-lg rounded-sm p-8 pb-12 mb-8'>
-            <h3 className='text-xl mb-8 font-semibold border-b pb-4'></h3>
+            <h3 className='text-xl mb-8 font-semibold border-b pb-4'>Leave A Reply</h3>
             <div className='grid grid-cols-1 gap-4 mb-4'>
                 <textarea
                     ref={commentElement}
