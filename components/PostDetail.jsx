@@ -25,7 +25,7 @@ const PostDetail = ({ post }) => {
             case 'heading-three':
                 return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
             case 'paragraph':
-                return <p key={index} className="mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+                return <p key={index} className="mb-8 body-text text-xl">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
             case 'heading-four':
                 return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
             case 'image':
@@ -64,10 +64,10 @@ const PostDetail = ({ post }) => {
                                     className='align-middle rounded-full'
                                     src={post.author.photo.url}
                                 />
-                                <p className='inline align-middle text-gray-700 ml-2 text-lg'>{post.author.name}</p>
+                                <p className='inline align-middle text-gray-700 ml-2 text-lg title-font'>{post.author.name}</p>
                             </div>
 
-                            <div className='font-medium text-gray-700'>
+                            <div className='font-medium text-gray-700 related-title'>
                                 <span>
                                     {moment(post.createdAt).format('MMM DD, YYYY')}
                                 </span>
@@ -76,7 +76,7 @@ const PostDetail = ({ post }) => {
                         </div>
                     </div>
                 </div>
-                <h1 className='mb-8 text-3xl font-semibold'>
+                <h1 className='mb-8 text-3xl font-semibold title-font'>
                     {post.title}
                 </h1>
                 {console.log(post.content.raw)}

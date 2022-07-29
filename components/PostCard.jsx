@@ -14,7 +14,7 @@ const PostCard = ({ post }) => {
                 />
             </div>
 
-            <h1 className='transition duration-500 text-center mb-8 cursor-pointer hover:text-pink-200 text-3xl font-semibold'>
+            <h1 className='transition duration-500 text-center mb-8 cursor-pointer hover:text-pink-200 text-3xl font-semibold title-font'>
                 <Link href={`/post/${post.slug}`}>
                     {post.title}
                 </Link>
@@ -29,17 +29,17 @@ const PostCard = ({ post }) => {
                         className='align-middle rounded-full'
                         src={post.author.photo.url}
                     />
-                    <p className='inline align-middle text-gray-700 ml-2 text-lg'>{post.author.name}</p>
+                    <p className='inline align-middle text-gray-700 ml-2 text-lg title-font'>{post.author.name}</p>
                 </div>
 
-                <div className='font-medium text-gray-700'>
+                <div className='font-medium text-gray-700 related-title'>
                     <span>
                         {moment(post.createdAt).format('MMM DD, YYYY')}
                     </span>
                 </div>
 
             </div>
-                <p className='text-center text-lg text-gray-800 font-normal px-4 lg:px-20 mb-8'>{post.excerpt}</p>
+                <p className='text-center text-lg text-gray-800 font-normal px-4 lg:px-20 mb-8 related-title'>{post.excerpt}</p>
 
                 <div className='text-center'>
                     <Link href={`/post/${post.slug}`}>
